@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="anaTasarim.master.cs" Inherits="anaTasarim" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta content="SKS Sakarya üniversitesi Kismi zamanlı calisan sistemi " name="description">
+<meta content="kayit sks sakarya üniversitesi kısmi zamanlı çalışan " name="keywords">
+<title>Sakarya Üniversitesi Kısmi Zamanlı Calışan Sistemi | SKS</title>
+<link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="assets/admin/pages/css/coming-soon.css" rel="stylesheet" type="text/css"/>
+<!-- END PAG LEVEL STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+<link href="assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css"/>
+<link href="assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 coming-soon-header">
+			<a class="brand" href="KullanimKlavuzu.pdf" target="_blank">
+			<div class="btn red" >SİTE İÇİ KULLANIM KLAVUZU</div>
+			</a>
+		</div>
+	</div>
+	<!--/end row-->
+	
+</div>
+
+
+
+
+
+    <form id="form1" runat="server">
+    <div class="main">
+       
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+           
+     </div>          
+    </form>
+    
+    <!-- END PRE-FOOTER -->
+</body>
+
+</html>

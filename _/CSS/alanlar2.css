@@ -1,0 +1,36 @@
+﻿body {
+}
+.conte {
+        width:800px;
+        height:auto;
+    }
+    .conteMin {
+        height:20px;
+        width:772px;
+        margin-top:5px;      
+    }
+    .conteDataView{
+        height:auto;
+        width:380px;
+        margin-top:10px;  
+        float:left;
+    }
+     .Aciklama{
+       
+        height:20px;
+        width:125px;
+        float:left;
+       
+    }
+     .textBox{
+        height:20px;
+        width:250px;
+        float:left;
+    }
+     
+    .uyari {
+        height: 20px;
+        width: 160px;
+        float: left;
+        margin-left:5px;
+    }

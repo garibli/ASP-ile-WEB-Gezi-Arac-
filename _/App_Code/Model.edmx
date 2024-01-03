@@ -1,0 +1,1897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="skscalismaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="SGKGirisCikis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrID" Type="int" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="SGKGiris" Type="date" />
+          <Property Name="SGKCikis" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblBirimler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nchar" MaxLength="100" />
+          <Property Name="IlkKontenjan" Type="int" />
+          <Property Name="EkKontenjan" Type="int" />
+          <Property Name="UstKontenjan" Type="int" />
+          <Property Name="BirimTuru" Type="nchar" MaxLength="1" />
+          <Property Name="AkademiKon" Type="int" />
+          <Property Name="IdariKon" Type="int" />
+          <Property Name="YedekAkademiKon" Type="int" />
+          <Property Name="YedekIdariKon" Type="int" />
+          <Property Name="calisanAkademi" Type="int" />
+          <Property Name="calisanIdari" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBolumler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="birimID" Type="int" />
+          <Property Name="adi" Type="nchar" MaxLength="50" />
+          <Property Name="ogrenimTuru" Type="int" />
+          <Property Name="bolumTuru" Type="nchar" MaxLength="1" />
+          <Property Name="altKontenjan" Type="int" />
+          <Property Name="AkademiKon" Type="int" />
+          <Property Name="IdariKon" Type="int" />
+          <Property Name="YedekAkademiKon" Type="int" />
+          <Property Name="YedekIdariKon" Type="int" />
+          <Property Name="calisanAkademi" Type="int" />
+          <Property Name="calisanIdari" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBolumTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nchar" MaxLength="20" />
+          <Property Name="bolumNo" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblCalisanYoklama">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrID" Type="int" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="tarih" Type="date" />
+          <Property Name="calistigiSaat" Type="decimal" Precision="3" Scale="1" />
+        </EntityType>
+        <EntityType Name="tblCalismaSekli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="tblCalismaYerleri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrID" Type="int" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="calisacagiCalistigiYer" Type="int" />
+          <Property Name="calisacagiCalistigiAltBirimi" Type="int" />
+          <Property Name="calismaSekli" Type="int" />
+          <Property Name="aktifMi" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblHazirlayanOnaylayan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nchar" MaxLength="30" />
+          <Property Name="soyad" Type="nchar" MaxLength="30" />
+          <Property Name="unvan" Type="nchar" MaxLength="50" />
+          <Property Name="birim" Type="int" />
+          <Property Name="bolum" Type="int" />
+          <Property Name="hazirlayanOnaylayan" Type="nchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblIlanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="persID" Type="int" />
+          <Property Name="isBasligi" Type="nchar" MaxLength="50" />
+          <Property Name="isMetni" Type="text" />
+          <Property Name="birimID" Type="int" />
+          <Property Name="bolumID" Type="int" />
+          <Property Name="kontenjan" Type="int" />
+          <Property Name="idari_Akademi" Type="int" />
+          <Property Name="isTanimi" Type="int" />
+          <Property Name="eklemeZamani" Type="date" />
+          <Property Name="bitisSuresi" Type="date" />
+          <Property Name="sksOnay" Type="nchar" MaxLength="2" />
+          <Property Name="programAdi" Type="nchar" MaxLength="20" />
+          <Property Name="calismaGunleri" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblIsTakip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isBaslik" Type="nvarchar" MaxLength="80" />
+          <Property Name="isIcerik" Type="nvarchar" MaxLength="250" />
+          <Property Name="isAcillik" Type="nvarchar" MaxLength="40" />
+          <Property Name="kontrol" Type="nvarchar" MaxLength="40" />
+          <Property Name="kim" Type="nvarchar" MaxLength="20" />
+          <Property Name="tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblMulakatSorulari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="komisyonID" Type="int" />
+          <Property Name="soru1" Type="nchar" MaxLength="150" />
+          <Property Name="soru2" Type="nchar" MaxLength="150" />
+          <Property Name="soru3" Type="nchar" MaxLength="150" />
+          <Property Name="soru4" Type="nchar" MaxLength="150" />
+          <Property Name="PuanMiktari" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="birimID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOdenekler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="asgariBrutUcret" Type="money" />
+          <Property Name="asgariNetUcret" Type="decimal" Precision="11" Scale="6" />
+          <Property Name="asgariGunlukUcret" Type="money" />
+          <Property Name="damgaVergisi" Type="decimal" Precision="8" Scale="7" />
+          <Property Name="gelirVergisi" Type="money" />
+          <Property Name="GSS43Orani" Type="decimal" Precision="8" Scale="5" />
+          <Property Name="doktoraBirimFiyati" Type="money" />
+          <Property Name="yuksekLisansBirimFiyati" Type="money" />
+          <Property Name="lisanBirimFiyati" Type="money" />
+          <Property Name="onlisansBirimFiyati" Type="money" />
+          <Property Name="azamiGunlukCalismaSuresi" Type="decimal" Precision="2" Scale="1" />
+        </EntityType>
+        <EntityType Name="tblOgrBasvuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="basvuru1" Type="int" />
+          <Property Name="basvuru2" Type="int" />
+          <Property Name="basvuru3" Type="int" />
+          <Property Name="basvuru1Puan" Type="int" />
+          <Property Name="basvuru2Puan" Type="int" />
+          <Property Name="basvuru3Puan" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOgrBasvuruBilgileri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BasvuruID" Type="int" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="50" />
+          <Property Name="ToplamPuan" Type="int" />
+          <Property Name="MulakatSoruldumu" Type="int" />
+          <Property Name="SKSGonder" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOgrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="ad" Type="nchar" MaxLength="50" />
+          <Property Name="soyad" Type="nchar" MaxLength="30" />
+          <Property Name="sifre" Type="nchar" MaxLength="8" />
+          <Property Name="tc" Type="nchar" MaxLength="11" />
+          <Property Name="mail" Type="nchar" MaxLength="50" />
+          <Property Name="ceptel" Type="nchar" MaxLength="10" />
+          <Property Name="okulu" Type="int" />
+          <Property Name="bolumu" Type="int" />
+          <Property Name="Sinifi" Type="nchar" MaxLength="1" />
+          <Property Name="notOrtalamasi" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="ogrenimTuru" Type="int" />
+          <Property Name="capOkulu" Type="int" Nullable="false" />
+          <Property Name="capBolumu" Type="int" />
+          <Property Name="aktifMi" Type="nchar" MaxLength="1" />
+          <Property Name="ikinciMail" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOgrenciAnketCevablari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrMail" Type="nchar" MaxLength="50" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="secimlerIDPUANEk1" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="secimlerIDPUANEk2" Type="nchar" MaxLength="50" />
+          <Property Name="secimlerIDPUANEk3" Type="nchar" MaxLength="50" />
+          <Property Name="anketPuani1" Type="int" />
+          <Property Name="anketPuani2" Type="int" />
+          <Property Name="anketPuani3" Type="int" />
+          <Property Name="anketPuaniTop" Type="int" />
+          <Property Name="eklenmeTarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="tblOgrenciMaas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrTC" Type="nchar" MaxLength="11" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="calistigiBirimID" Type="int" />
+          <Property Name="calistigiSaat" Type="decimal" Precision="12" Scale="7" />
+          <Property Name="calistigiGunSayisi" Type="nchar" MaxLength="2" />
+          <Property Name="ogrenimTuruBirimFiyat" Type="smallmoney" />
+          <Property Name="odenecekUcret" Type="money" />
+          <Property Name="ogrenimSekli" Type="int" />
+          <Property Name="asgariGunlukBrut" Type="smallmoney" />
+          <Property Name="aylikBrutUcret" Type="smallmoney" />
+          <Property Name="SGKPrimHesabinaEsasUcretHesabi" Type="smallmoney" />
+          <Property Name="damgaVergisiTutari" Type="smallmoney" />
+          <Property Name="gelirVergisiTutari" Type="smallmoney" />
+          <Property Name="yasalKesinti" Type="smallmoney" />
+          <Property Name="yasalKesintiOrani" Type="decimal" Precision="11" Scale="7" />
+          <Property Name="GSS" Type="nchar" MaxLength="2" />
+          <Property Name="GSS43Prim" Type="smallmoney" />
+          <Property Name="SGKGirisTarihi" Type="date" />
+          <Property Name="SGKCikisTarihi" Type="date" />
+          <Property Name="düzenlemeTarihi" Type="date" />
+          <Property Name="aitOlduguAy" Type="date" />
+        </EntityType>
+        <EntityType Name="tblOgrenciMaasTopBilgileri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="topCalisanSaat" Type="nchar" MaxLength="11" />
+          <Property Name="topAylikBrutUcret" Type="nchar" MaxLength="11" />
+          <Property Name="topUcretSGKPrimHesabinaEsas" Type="nchar" MaxLength="11" />
+          <Property Name="topSGKPrimIsciYuzde5" Type="nchar" MaxLength="11" />
+          <Property Name="topUcretGelirVergisiEsas" Type="nchar" MaxLength="11" />
+          <Property Name="topGelirVergisiKes" Type="nchar" MaxLength="11" />
+          <Property Name="topDamgaVergisiKes" Type="nchar" MaxLength="11" />
+          <Property Name="topYasalKesinti" Type="nchar" MaxLength="11" />
+          <Property Name="topNetUcret" Type="nchar" MaxLength="11" />
+          <Property Name="topCalisanSay" Type="nchar" MaxLength="11" />
+          <Property Name="ilgiliAy" Type="date" />
+          <Property Name="olusturmaTarihi" Type="date" />
+          <Property Name="olusturanPersID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOgrenimTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nchar" MaxLength="20" />
+          <Property Name="ogrenimNo" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOgrHesapNoGSS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="ibanNo" Type="nchar" MaxLength="26" />
+          <Property Name="GSS2243" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="tblogrReferans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="ref" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblOnayListesi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrID" Type="int" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="onaylayanKomisyonUyesi" Type="int" />
+          <Property Name="onaylayanSKSUyesi" Type="int" />
+          <Property Name="KomisyonOnayTarihi" Type="nchar" MaxLength="11" />
+          <Property Name="SKSOnayTarihi" Type="nchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="tblPersonel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="persTC" Type="nchar" MaxLength="11" />
+          <Property Name="adi" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="soyad" Type="nchar" MaxLength="15" />
+          <Property Name="sifre" Type="nchar" MaxLength="8" />
+          <Property Name="mail" Type="nchar" MaxLength="50" />
+          <Property Name="dahiliNo" Type="nchar" MaxLength="5" />
+          <Property Name="birimId" Type="int" />
+          <Property Name="bolumId" Type="int" />
+          <Property Name="yetkiID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPuantajAyBelirle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gelecekAyPuantaj" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tblPuantajGirmeSuresi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="puantajSuresi" Type="int" />
+        </EntityType>
+        <EntityType Name="tblResmiTatilGunleri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resmiTatil" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'skscalisma.dbo.tblSgkPrim' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblSgkPrim">
+          <Property Name="webAdres" Type="nchar" MaxLength="50" />
+          <Property Name="SKSsifre1" Type="nchar" MaxLength="15" />
+          <Property Name="SKSsifre2" Type="nchar" MaxLength="15" />
+          <Property Name="SKSsifre3" Type="nchar" MaxLength="15" />
+          <Property Name="SKSsifre4" Type="nchar" MaxLength="2" />
+        </EntityType>-->
+        <EntityType Name="tblTalepKontenjan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="birimID" Type="int" />
+          <Property Name="bolumID" Type="int" />
+          <Property Name="akademikKontenjan" Type="int" />
+          <Property Name="idariKontenjan" Type="int" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="onay" Type="int" />
+        </EntityType>
+        <EntityType Name="tblYasalKesinti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogrNo" Type="nchar" MaxLength="10" />
+          <Property Name="yasalKesintiTutari" Type="decimal" Precision="11" Scale="7" />
+          <Property Name="yasalKesintiOrani" Type="decimal" Precision="11" Scale="7" />
+          <Property Name="yansitilcakMaasDonemi" Type="date" />
+          <Property Name="aciklama" Type="nchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblYetkiTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adi" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <Function Name="BasvuruOgrSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="BirimEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="adi" Type="nchar" Mode="In" />
+          <Parameter Name="ustkontenjan" Type="int" Mode="In" />
+          <Parameter Name="birimturu" Type="nchar" Mode="In" />
+          <Parameter Name="IlkKontenjan" Type="int" Mode="In" />
+          <Parameter Name="EkKontenjan" Type="int" Mode="In" />
+          <Parameter Name="akademiKon" Type="int" Mode="In" />
+          <Parameter Name="idariKon" Type="int" Mode="In" />
+          <Parameter Name="yedekAkaKon" Type="int" Mode="In" />
+          <Parameter Name="yedekIdariKon" Type="int" Mode="In" />
+          <Parameter Name="calisanAkademi" Type="int" Mode="In" />
+          <Parameter Name="calisanIdari" Type="int" Mode="In" />
+        </Function>
+        <Function Name="birimleriGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="birimleriParamGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="birimSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birimID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BolumEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birimID" Type="int" Mode="In" />
+          <Parameter Name="adi" Type="nchar" Mode="In" />
+          <Parameter Name="ogrenimTuru" Type="int" Mode="In" />
+          <Parameter Name="bolumTuru" Type="nchar" Mode="In" />
+          <Parameter Name="altKontenjan" Type="int" Mode="In" />
+          <Parameter Name="akademiKon" Type="int" Mode="In" />
+          <Parameter Name="idariKon" Type="int" Mode="In" />
+          <Parameter Name="yedekAkademiKon" Type="int" Mode="In" />
+          <Parameter Name="yedekIdariKon" Type="int" Mode="In" />
+          <Parameter Name="calisanAkademi" Type="int" Mode="In" />
+          <Parameter Name="calisanIdari" Type="int" Mode="In" />
+        </Function>
+        <Function Name="bolumleriGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="bolumlerParamGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birimID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="bolumSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bolumID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="brutMaas1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="Istenenay" Type="nchar" Mode="In" />
+          <Parameter Name="brutMaas" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="calisanAktifEt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="calisanParamGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birimID" Type="int" Mode="In" />
+          <Parameter Name="altBirimID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CalisanYoklamaEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="tarih" Type="date" Mode="In" />
+          <Parameter Name="calistigiSaat" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="calisanYoklamaEklensinMi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="tarih" Type="date" Mode="In" />
+          <Parameter Name="girilcekSaat" Type="decimal" Mode="In" />
+          <Parameter Name="kayitYapilsinmi" Type="int" Mode="InOut" />
+          <Parameter Name="aciklama" Type="nchar" Mode="InOut" />
+        </Function>
+        <Function Name="calisanYoklamaGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ay" Type="int" Mode="In" />
+          <Parameter Name="tarih" Type="date" Mode="InOut" />
+          <Parameter Name="calismaSaati" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="CalismaSekliEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="adi" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="calismaYeriEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="calisacagiCalistigiYer" Type="int" Mode="In" />
+          <Parameter Name="calisacagiCalistigiAltBirimi" Type="int" Mode="In" />
+          <Parameter Name="calismaSekli" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GunHesabi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="paramOgrID" Type="int" Mode="In" />
+          <Parameter Name="paramSgkGiris" Type="nchar" Mode="In" />
+          <Parameter Name="paramIstenDonem" Type="nchar" Mode="In" />
+          <Parameter Name="calistigiGun" Type="int" Mode="InOut" />
+          <Parameter Name="eksikGun" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="HizliIseAl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="calisacagiBirimID" Type="int" Mode="In" />
+          <Parameter Name="calisacagiAltBirimID" Type="int" Mode="In" />
+          <Parameter Name="calismaSekli" Type="int" Mode="In" />
+          <Parameter Name="onaylayanSKSID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IlanEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="persID" Type="int" Mode="In" />
+          <Parameter Name="isBasligi" Type="nchar" Mode="In" />
+          <Parameter Name="isMetni" Type="text" Mode="In" />
+          <Parameter Name="birimID" Type="int" Mode="In" />
+          <Parameter Name="bolumID" Type="int" Mode="In" />
+          <Parameter Name="kontenjan" Type="int" Mode="In" />
+          <Parameter Name="idariAkademi" Type="int" Mode="In" />
+          <Parameter Name="isTanimi" Type="int" Mode="In" />
+          <Parameter Name="bitisSuresi" Type="date" Mode="In" />
+          <Parameter Name="sksOnay" Type="nchar" Mode="In" />
+          <Parameter Name="programAdi" Type="nchar" Mode="In" />
+          <Parameter Name="calismaGunleri" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="ilanSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="isTanimiGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="kontenjanEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="birimID" Type="int" Mode="In" />
+          <Parameter Name="Ustkontenjan" Type="int" Mode="In" />
+          <Parameter Name="EkKontenjan" Type="int" Mode="In" />
+          <Parameter Name="IlkKontenjan" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ogrAktifPasit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aktifMi" Type="nchar" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="ogrAnketCvb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrMail" Type="nchar" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk1" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk2" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk3" Type="nchar" Mode="In" />
+          <Parameter Name="anketPuani1" Type="int" Mode="In" />
+          <Parameter Name="anketPuani2" Type="int" Mode="In" />
+          <Parameter Name="anketPuani3" Type="int" Mode="In" />
+          <Parameter Name="anketPuaniTop" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ogrAnketGuncelle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk1" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk2" Type="nchar" Mode="In" />
+          <Parameter Name="anketPuani1" Type="int" Mode="In" />
+          <Parameter Name="anketPuani2" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ogrAnketGuncelle3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="secimlerIDPUANEk3" Type="nchar" Mode="In" />
+          <Parameter Name="anketPuani3" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ogrEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="ad" Type="nchar" Mode="In" />
+          <Parameter Name="soyad" Type="nchar" Mode="In" />
+          <Parameter Name="sifre" Type="nchar" Mode="In" />
+          <Parameter Name="tc" Type="nchar" Mode="In" />
+          <Parameter Name="mail" Type="nchar" Mode="In" />
+          <Parameter Name="ceptel" Type="nchar" Mode="In" />
+          <Parameter Name="okulu" Type="int" Mode="In" />
+          <Parameter Name="bolumu" Type="int" Mode="In" />
+          <Parameter Name="ogrenimTuru" Type="nchar" Mode="In" />
+          <Parameter Name="capOkulu" Type="int" Mode="In" />
+          <Parameter Name="capBolumu" Type="int" Mode="In" />
+          <Parameter Name="sinifi" Type="nchar" Mode="In" />
+          <Parameter Name="notOrtalamasi" Type="decimal" Mode="In" />
+          <Parameter Name="iMail" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="OgrenimEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="adi" Type="nchar" Mode="In" />
+          <Parameter Name="katSayi" Type="money" Mode="In" />
+        </Function>
+        <Function Name="ogrenimTuruGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ogrGiris" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mail" Type="nchar" Mode="In" />
+          <Parameter Name="sifre" Type="nchar" Mode="In" />
+          <Parameter Name="Ogrkayit" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="ogrGSS2243Guncelle1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="GSS2243" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="ogrHesapNoGSSEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="ibanNo" Type="nchar" Mode="In" />
+          <Parameter Name="GSS2243" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="ogrMaasEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aitOlduguAy" Type="date" Mode="In" />
+          <Parameter Name="aylikBrutUcret" Type="smallmoney" Mode="In" />
+          <Parameter Name="calistigiGunSayisi" Type="nchar" Mode="In" />
+          <Parameter Name="damgaVergisiTutari" Type="smallmoney" Mode="In" />
+          <Parameter Name="duzenlemeTarihi" Type="date" Mode="In" />
+          <Parameter Name="gelirVergisiTutari" Type="smallmoney" Mode="In" />
+          <Parameter Name="GSS43Prim" Type="smallmoney" Mode="In" />
+          <Parameter Name="odenecekUcret" Type="money" Mode="In" />
+          <Parameter Name="ogrenimSekli" Type="int" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="ogrTC" Type="nchar" Mode="In" />
+          <Parameter Name="yasalKesinti" Type="smallmoney" Mode="In" />
+          <Parameter Name="yasalKesintiOrani" Type="decimal" Mode="In" />
+          <Parameter Name="SGKPrimHesabinaEsasUcretHesabi" Type="smallmoney" Mode="In" />
+          <Parameter Name="SGKGirisTarihi" Type="date" Mode="In" />
+          <Parameter Name="SGKCikisTarihi" Type="date" Mode="In" />
+          <Parameter Name="asgariGunlukBrut" Type="smallmoney" Mode="In" />
+          <Parameter Name="calistigiBirimID" Type="int" Mode="In" />
+          <Parameter Name="GSS" Type="nchar" Mode="In" />
+          <Parameter Name="calistigiSaat" Type="decimal" Mode="In" />
+          <Parameter Name="ogrenimTuruBirimFiyat" Type="smallmoney" Mode="In" />
+        </Function>
+        <Function Name="ogrMaasSil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ilgiliTarih" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ogrReferansEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ref" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="PersonelGiris" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mail" Type="nchar" Mode="In" />
+          <Parameter Name="sifre" Type="nchar" Mode="In" />
+          <Parameter Name="Perskayit" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="personelYetkiGetir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="puantajGirmeSuresi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puantajGirmeGunSure" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sgkCikis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="sgkCikis" Type="date" Mode="In" />
+          <Parameter Name="calismaBasvuruID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sgkCikisEXE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="sgkCikis" Type="date" Mode="In" />
+          <Parameter Name="calismaBasvuruID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sgkGirisCikisEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ogrID" Type="int" Mode="In" />
+          <Parameter Name="ogrNo" Type="nchar" Mode="In" />
+          <Parameter Name="SGKGiris" Type="date" Mode="In" />
+          <Parameter Name="SGKCikis" Type="date" Mode="In" />
+          <Parameter Name="calismaBasvuruID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sgkOlmasiGerekenTutar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Istenenay" Type="int" Mode="In" />
+          <Parameter Name="sgkOlmasiGereken" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="YetkiTuruEkle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="adi" Type="nchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="skscalismaModelStoreContainer">
+          <EntitySet Name="SGKGirisCikis" EntityType="Self.SGKGirisCikis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBirimler" EntityType="Self.tblBirimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBolumler" EntityType="Self.tblBolumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBolumTuru" EntityType="Self.tblBolumTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCalisanYoklama" EntityType="Self.tblCalisanYoklama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCalismaSekli" EntityType="Self.tblCalismaSekli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCalismaYerleri" EntityType="Self.tblCalismaYerleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHazirlayanOnaylayan" EntityType="Self.tblHazirlayanOnaylayan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIlanlar" EntityType="Self.tblIlanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblIsTakip" EntityType="Self.tblIsTakip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMulakatSorulari" EntityType="Self.tblMulakatSorulari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOdenekler" EntityType="Self.tblOdenekler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrBasvuru" EntityType="Self.tblOgrBasvuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrBasvuruBilgileri" EntityType="Self.tblOgrBasvuruBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenci" EntityType="Self.tblOgrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenciAnketCevablari" EntityType="Self.tblOgrenciAnketCevablari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenciMaas" EntityType="Self.tblOgrenciMaas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenciMaasTopBilgileri" EntityType="Self.tblOgrenciMaasTopBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrenimTuru" EntityType="Self.tblOgrenimTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOgrHesapNoGSS" EntityType="Self.tblOgrHesapNoGSS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblogrReferans" EntityType="Self.tblogrReferans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOnayListesi" EntityType="Self.tblOnayListesi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPersonel" EntityType="Self.tblPersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPuantajAyBelirle" EntityType="Self.tblPuantajAyBelirle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPuantajGirmeSuresi" EntityType="Self.tblPuantajGirmeSuresi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblResmiTatilGunleri" EntityType="Self.tblResmiTatilGunleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTalepKontenjan" EntityType="Self.tblTalepKontenjan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYasalKesinti" EntityType="Self.tblYasalKesinti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblYetkiTuru" EntityType="Self.tblYetkiTuru" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="skscalismaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TurnaEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="BirimEkle">
+            <Parameter Name="adi" Mode="In" Type="String" />
+            <Parameter Name="ustkontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="birimturu" Mode="In" Type="String" />
+            <Parameter Name="IlkKontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="EkKontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="akademiKon" Mode="In" Type="Int32" />
+            <Parameter Name="idariKon" Mode="In" Type="Int32" />
+            <Parameter Name="yedekAkaKon" Mode="In" Type="Int32" />
+            <Parameter Name="yedekIdariKon" Mode="In" Type="Int32" />
+            <Parameter Name="calisanAkademi" Mode="In" Type="Int32" />
+            <Parameter Name="calisanIdari" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="birimleriGetir" />
+          <FunctionImport Name="birimleriParamGetir">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="birimSil">
+          <Parameter Name="birimID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BolumEkle">
+            <Parameter Name="birimID" Mode="In" Type="Int32" />
+            <Parameter Name="adi" Mode="In" Type="String" />
+            <Parameter Name="ogrenimTuru" Mode="In" Type="Int32" />
+            <Parameter Name="bolumTuru" Mode="In" Type="String" />
+            <Parameter Name="altKontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="akademiKon" Mode="In" Type="Int32" />
+            <Parameter Name="idariKon" Mode="In" Type="Int32" />
+            <Parameter Name="yedekAkademiKon" Mode="In" Type="Int32" />
+            <Parameter Name="yedekIdariKon" Mode="In" Type="Int32" />
+            <Parameter Name="calisanAkademi" Mode="In" Type="Int32" />
+            <Parameter Name="calisanIdari" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="bolumleriGetir" />
+          <FunctionImport Name="bolumlerParamGetir">
+          <Parameter Name="birimID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="bolumSil">
+          <Parameter Name="bolumID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="brutMaas1">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="Istenenay" Mode="In" Type="String" />
+            <Parameter Name="brutMaas" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="calisanAktifEt">
+          <Parameter Name="ogrNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="calisanParamGetir">
+            <Parameter Name="birimID" Mode="In" Type="Int32" />
+            <Parameter Name="altBirimID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CalisanYoklamaEkle">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="tarih" Mode="In" Type="DateTime" />
+            <Parameter Name="calistigiSaat" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="calisanYoklamaEklensinMi">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="tarih" Mode="In" Type="DateTime" />
+            <Parameter Name="girilcekSaat" Mode="In" Type="Decimal" />
+            <Parameter Name="kayitYapilsinmi" Mode="InOut" Type="Int32" />
+            <Parameter Name="aciklama" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="calisanYoklamaGetir">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="ay" Mode="In" Type="Int32" />
+            <Parameter Name="tarih" Mode="InOut" Type="DateTime" />
+            <Parameter Name="calismaSaati" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CalismaSekliEkle">
+          <Parameter Name="adi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="calismaYeriEkle">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="calisacagiCalistigiYer" Mode="In" Type="Int32" />
+            <Parameter Name="calisacagiCalistigiAltBirimi" Mode="In" Type="Int32" />
+            <Parameter Name="calismaSekli" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GunHesabi">
+            <Parameter Name="paramOgrID" Mode="In" Type="Int32" />
+            <Parameter Name="paramSgkGiris" Mode="In" Type="String" />
+            <Parameter Name="paramIstenDonem" Mode="In" Type="String" />
+            <Parameter Name="calistigiGun" Mode="InOut" Type="Int32" />
+            <Parameter Name="eksikGun" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="HizliIseAl">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="calisacagiBirimID" Mode="In" Type="Int32" />
+            <Parameter Name="calisacagiAltBirimID" Mode="In" Type="Int32" />
+            <Parameter Name="calismaSekli" Mode="In" Type="Int32" />
+            <Parameter Name="onaylayanSKSID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="IlanEkle">
+            <Parameter Name="persID" Mode="In" Type="Int32" />
+            <Parameter Name="isBasligi" Mode="In" Type="String" />
+            <Parameter Name="isMetni" Mode="In" Type="String" />
+            <Parameter Name="birimID" Mode="In" Type="Int32" />
+            <Parameter Name="bolumID" Mode="In" Type="Int32" />
+            <Parameter Name="kontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="idariAkademi" Mode="In" Type="Int32" />
+            <Parameter Name="isTanimi" Mode="In" Type="Int32" />
+            <Parameter Name="bitisSuresi" Mode="In" Type="DateTime" />
+            <Parameter Name="sksOnay" Mode="In" Type="String" />
+            <Parameter Name="programAdi" Mode="In" Type="String" />
+            <Parameter Name="calismaGunleri" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ilanSil">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="isTanimiGetir" />
+          <FunctionImport Name="kontenjanEkle">
+            <Parameter Name="birimID" Mode="In" Type="Int32" />
+            <Parameter Name="Ustkontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="EkKontenjan" Mode="In" Type="Int32" />
+            <Parameter Name="IlkKontenjan" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrAktifPasit">
+            <Parameter Name="aktifMi" Mode="In" Type="String" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ogrAnketCvb">
+            <Parameter Name="ogrMail" Mode="In" Type="String" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk1" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk2" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk3" Mode="In" Type="String" />
+            <Parameter Name="anketPuani1" Mode="In" Type="Int32" />
+            <Parameter Name="anketPuani2" Mode="In" Type="Int32" />
+            <Parameter Name="anketPuani3" Mode="In" Type="Int32" />
+            <Parameter Name="anketPuaniTop" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrAnketGuncelle">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk1" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk2" Mode="In" Type="String" />
+            <Parameter Name="anketPuani1" Mode="In" Type="Int32" />
+            <Parameter Name="anketPuani2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrAnketGuncelle3">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="secimlerIDPUANEk3" Mode="In" Type="String" />
+            <Parameter Name="anketPuani3" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrEkle">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="ad" Mode="In" Type="String" />
+            <Parameter Name="soyad" Mode="In" Type="String" />
+            <Parameter Name="sifre" Mode="In" Type="String" />
+            <Parameter Name="tc" Mode="In" Type="String" />
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="ceptel" Mode="In" Type="String" />
+            <Parameter Name="okulu" Mode="In" Type="Int32" />
+            <Parameter Name="bolumu" Mode="In" Type="Int32" />
+            <Parameter Name="ogrenimTuru" Mode="In" Type="String" />
+            <Parameter Name="capOkulu" Mode="In" Type="Int32" />
+            <Parameter Name="capBolumu" Mode="In" Type="Int32" />
+            <Parameter Name="sinifi" Mode="In" Type="String" />
+            <Parameter Name="notOrtalamasi" Mode="In" Type="Decimal" />
+            <Parameter Name="iMail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="OgrenimEkle">
+            <Parameter Name="adi" Mode="In" Type="String" />
+            <Parameter Name="katSayi" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ogrenimTuruGetir" />
+          <FunctionImport Name="ogrGiris">
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="sifre" Mode="In" Type="String" />
+            <Parameter Name="Ogrkayit" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrGSS2243Guncelle1">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="GSS2243" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ogrHesapNoGSSEkle">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="ibanNo" Mode="In" Type="String" />
+            <Parameter Name="GSS2243" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ogrMaasEkle">
+            <Parameter Name="aitOlduguAy" Mode="In" Type="DateTime" />
+            <Parameter Name="aylikBrutUcret" Mode="In" Type="Decimal" />
+            <Parameter Name="calistigiGunSayisi" Mode="In" Type="String" />
+            <Parameter Name="damgaVergisiTutari" Mode="In" Type="Decimal" />
+            <Parameter Name="duzenlemeTarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="gelirVergisiTutari" Mode="In" Type="Decimal" />
+            <Parameter Name="GSS43Prim" Mode="In" Type="Decimal" />
+            <Parameter Name="odenecekUcret" Mode="In" Type="Decimal" />
+            <Parameter Name="ogrenimSekli" Mode="In" Type="Int32" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="ogrTC" Mode="In" Type="String" />
+            <Parameter Name="yasalKesinti" Mode="In" Type="Decimal" />
+            <Parameter Name="yasalKesintiOrani" Mode="In" Type="Decimal" />
+            <Parameter Name="SGKPrimHesabinaEsasUcretHesabi" Mode="In" Type="Decimal" />
+            <Parameter Name="SGKGirisTarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="SGKCikisTarihi" Mode="In" Type="DateTime" />
+            <Parameter Name="asgariGunlukBrut" Mode="In" Type="Decimal" />
+            <Parameter Name="calistigiBirimID" Mode="In" Type="Int32" />
+            <Parameter Name="GSS" Mode="In" Type="String" />
+            <Parameter Name="calistigiSaat" Mode="In" Type="Decimal" />
+            <Parameter Name="ogrenimTuruBirimFiyat" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="personelYetkiGetir" />
+          <FunctionImport Name="puantajGirmeSuresi">
+          <Parameter Name="puantajGirmeGunSure" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sgkCikis">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="sgkCikis" Mode="In" Type="DateTime" />
+            <Parameter Name="calismaBasvuruID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sgkCikisEXE">
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="sgkCikis" Mode="In" Type="DateTime" />
+            <Parameter Name="calismaBasvuruID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sgkGirisCikisEkle">
+            <Parameter Name="ogrID" Mode="In" Type="Int32" />
+            <Parameter Name="ogrNo" Mode="In" Type="String" />
+            <Parameter Name="SGKGiris" Mode="In" Type="DateTime" />
+            <Parameter Name="SGKCikis" Mode="In" Type="DateTime" />
+            <Parameter Name="calismaBasvuruID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sgkOlmasiGerekenTutar">
+            <Parameter Name="Istenenay" Mode="In" Type="Int32" />
+            <Parameter Name="sgkOlmasiGereken" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="YetkiTuruEkle">
+          <Parameter Name="adi" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PersonelGiris">
+            <Parameter Name="mail" Mode="In" Type="String" />
+            <Parameter Name="sifre" Mode="In" Type="String" />
+            <Parameter Name="Perskayit" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ogrMaasSil">
+          <Parameter Name="ilgiliTarih" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="SGKGirisCikis" EntityType="skscalismaModel.SGKGirisCikis" />
+          <EntitySet Name="sysdiagrams" EntityType="skscalismaModel.sysdiagrams" />
+          <EntitySet Name="tblBirimler" EntityType="skscalismaModel.tblBirimler" />
+          <EntitySet Name="tblBolumler" EntityType="skscalismaModel.tblBolumler" />
+          <EntitySet Name="tblBolumTuru" EntityType="skscalismaModel.tblBolumTuru" />
+          <EntitySet Name="tblCalisanYoklama" EntityType="skscalismaModel.tblCalisanYoklama" />
+          <EntitySet Name="tblCalismaSekli" EntityType="skscalismaModel.tblCalismaSekli" />
+          <EntitySet Name="tblCalismaYerleri" EntityType="skscalismaModel.tblCalismaYerleri" />
+          <EntitySet Name="tblHazirlayanOnaylayan" EntityType="skscalismaModel.tblHazirlayanOnaylayan" />
+          <EntitySet Name="tblIlanlar" EntityType="skscalismaModel.tblIlanlar" />
+          <EntitySet Name="tblIsTakip" EntityType="skscalismaModel.tblIsTakip" />
+          <EntitySet Name="tblMulakatSorulari" EntityType="skscalismaModel.tblMulakatSorulari" />
+          <EntitySet Name="tblOdenekler" EntityType="skscalismaModel.tblOdenekler" />
+          <EntitySet Name="tblOgrBasvuru" EntityType="skscalismaModel.tblOgrBasvuru" />
+          <EntitySet Name="tblOgrenci" EntityType="skscalismaModel.tblOgrenci" />
+          <EntitySet Name="tblOgrenciAnketCevablari" EntityType="skscalismaModel.tblOgrenciAnketCevablari" />
+          <EntitySet Name="tblOgrenciMaas" EntityType="skscalismaModel.tblOgrenciMaas" />
+          <EntitySet Name="tblOgrenciMaasTopBilgileri" EntityType="skscalismaModel.tblOgrenciMaasTopBilgileri" />
+          <EntitySet Name="tblOgrenimTuru" EntityType="skscalismaModel.tblOgrenimTuru" />
+          <EntitySet Name="tblOgrHesapNoGSS" EntityType="skscalismaModel.tblOgrHesapNoGSS" />
+          <EntitySet Name="tblogrReferans" EntityType="skscalismaModel.tblogrReferans" />
+          <EntitySet Name="tblOnayListesi" EntityType="skscalismaModel.tblOnayListesi" />
+          <EntitySet Name="tblPersonel" EntityType="skscalismaModel.tblPersonel" />
+          <EntitySet Name="tblPuantajAyBelirle" EntityType="skscalismaModel.tblPuantajAyBelirle" />
+          <EntitySet Name="tblPuantajGirmeSuresi" EntityType="skscalismaModel.tblPuantajGirmeSuresi" />
+          <EntitySet Name="tblResmiTatilGunleri" EntityType="skscalismaModel.tblResmiTatilGunleri" />
+          <EntitySet Name="tblTalepKontenjan" EntityType="skscalismaModel.tblTalepKontenjan" />
+          <EntitySet Name="tblYasalKesinti" EntityType="skscalismaModel.tblYasalKesinti" />
+          <EntitySet Name="tblYetkiTuru" EntityType="skscalismaModel.tblYetkiTuru" />
+          <FunctionImport Name="BasvuruOgrSil">
+          <Parameter Name="ogrNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tblOgrBasvuruBilgileri" EntityType="skscalismaModel.tblOgrBasvuruBilgileri" />
+        </EntityContainer>
+        <EntityType Name="SGKGirisCikis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ogrID" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="SGKGiris" Precision="0" />
+          <Property Type="DateTime" Name="SGKCikis" Precision="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblBirimler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="adi" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="IlkKontenjan" />
+          <Property Type="Int32" Name="EkKontenjan" />
+          <Property Type="Int32" Name="UstKontenjan" />
+          <Property Type="String" Name="BirimTuru" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="AkademiKon" />
+          <Property Type="Int32" Name="IdariKon" />
+          <Property Type="Int32" Name="YedekAkademiKon" />
+          <Property Type="Int32" Name="YedekIdariKon" />
+          <Property Type="Int32" Name="calisanAkademi" />
+          <Property Type="Int32" Name="calisanIdari" />
+        </EntityType>
+        <EntityType Name="tblBolumler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="birimID" />
+          <Property Type="String" Name="adi" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="ogrenimTuru" />
+          <Property Type="String" Name="bolumTuru" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="altKontenjan" />
+          <Property Type="Int32" Name="AkademiKon" />
+          <Property Type="Int32" Name="IdariKon" />
+          <Property Type="Int32" Name="YedekAkademiKon" />
+          <Property Type="Int32" Name="YedekIdariKon" />
+          <Property Type="Int32" Name="calisanAkademi" />
+          <Property Type="Int32" Name="calisanIdari" />
+        </EntityType>
+        <EntityType Name="tblBolumTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="adi" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="bolumNo" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblCalisanYoklama">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ogrID" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="tarih" Precision="0" />
+          <Property Type="Decimal" Name="calistigiSaat" Precision="3" Scale="1" />
+        </EntityType>
+        <EntityType Name="tblCalismaSekli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="adi" MaxLength="40" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblCalismaYerleri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ogrID" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="calisacagiCalistigiYer" />
+          <Property Type="Int32" Name="calisacagiCalistigiAltBirimi" />
+          <Property Type="Int32" Name="calismaSekli" />
+          <Property Type="String" Name="aktifMi" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblHazirlayanOnaylayan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ad" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soyad" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="unvan" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="birim" />
+          <Property Type="Int32" Name="bolum" />
+          <Property Type="String" Name="hazirlayanOnaylayan" Nullable="false" MaxLength="13" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblIlanlar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="persID" />
+          <Property Type="String" Name="isBasligi" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="isMetni" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="birimID" />
+          <Property Type="Int32" Name="bolumID" />
+          <Property Type="Int32" Name="kontenjan" />
+          <Property Type="Int32" Name="idari_Akademi" />
+          <Property Type="Int32" Name="isTanimi" />
+          <Property Type="DateTime" Name="eklemeZamani" Precision="0" />
+          <Property Type="DateTime" Name="bitisSuresi" Precision="0" />
+          <Property Type="String" Name="sksOnay" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="programAdi" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="calismaGunleri" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblIsTakip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="isBaslik" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="isIcerik" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="isAcillik" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="kontrol" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="kim" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="tarih" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblMulakatSorulari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="komisyonID" />
+          <Property Type="String" Name="soru1" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soru2" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soru3" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soru4" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="PuanMiktari" Precision="8" Scale="3" />
+          <Property Type="Int32" Name="birimID" />
+        </EntityType>
+        <EntityType Name="tblOdenekler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="asgariBrutUcret" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="asgariNetUcret" Precision="11" Scale="6" />
+          <Property Type="Decimal" Name="asgariGunlukUcret" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="damgaVergisi" Precision="8" Scale="7" />
+          <Property Type="Decimal" Name="gelirVergisi" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="GSS43Orani" Precision="8" Scale="5" />
+          <Property Type="Decimal" Name="doktoraBirimFiyati" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="yuksekLisansBirimFiyati" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="lisanBirimFiyati" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="onlisansBirimFiyati" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="azamiGunlukCalismaSuresi" Precision="2" Scale="1" />
+        </EntityType>
+        <EntityType Name="tblOgrBasvuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="basvuru1" />
+          <Property Type="Int32" Name="basvuru2" />
+          <Property Type="Int32" Name="basvuru3" />
+          <Property Type="Int32" Name="basvuru1Puan" />
+          <Property Type="Int32" Name="basvuru2Puan" />
+          <Property Type="Int32" Name="basvuru3Puan" />
+        </EntityType>
+        <EntityType Name="tblOgrenci">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ad" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soyad" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="sifre" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="tc" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="mail" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ceptel" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="okulu" />
+          <Property Type="Int32" Name="bolumu" />
+          <Property Type="String" Name="Sinifi" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="notOrtalamasi" Precision="5" Scale="3" />
+          <Property Type="Int32" Name="ogrenimTuru" />
+          <Property Type="Int32" Name="capOkulu" Nullable="false" />
+          <Property Type="Int32" Name="capBolumu" />
+          <Property Type="String" Name="aktifMi" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ikinciMail" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOgrenciAnketCevablari">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrMail" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="secimlerIDPUANEk1" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="secimlerIDPUANEk2" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="secimlerIDPUANEk3" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="anketPuani1" />
+          <Property Type="Int32" Name="anketPuani2" />
+          <Property Type="Int32" Name="anketPuani3" />
+          <Property Type="Int32" Name="anketPuaniTop" />
+          <Property Type="DateTime" Name="eklenmeTarihi" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblOgrenciMaas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrTC" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="calistigiBirimID" />
+          <Property Type="Decimal" Name="calistigiSaat" Precision="12" Scale="7" />
+          <Property Type="String" Name="calistigiGunSayisi" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="ogrenimTuruBirimFiyat" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="odenecekUcret" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="ogrenimSekli" />
+          <Property Type="Decimal" Name="asgariGunlukBrut" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="aylikBrutUcret" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="SGKPrimHesabinaEsasUcretHesabi" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="damgaVergisiTutari" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="gelirVergisiTutari" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="yasalKesinti" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="yasalKesintiOrani" Precision="11" Scale="7" />
+          <Property Type="String" Name="GSS" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="GSS43Prim" Precision="10" Scale="4" />
+          <Property Type="DateTime" Name="SGKGirisTarihi" Precision="0" />
+          <Property Type="DateTime" Name="SGKCikisTarihi" Precision="0" />
+          <Property Type="DateTime" Name="düzenlemeTarihi" Precision="0" />
+          <Property Type="DateTime" Name="aitOlduguAy" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblOgrenciMaasTopBilgileri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="topCalisanSaat" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topAylikBrutUcret" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topUcretSGKPrimHesabinaEsas" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topSGKPrimIsciYuzde5" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topUcretGelirVergisiEsas" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topGelirVergisiKes" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topDamgaVergisiKes" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topYasalKesinti" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topNetUcret" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="topCalisanSay" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="ilgiliAy" Precision="0" />
+          <Property Type="DateTime" Name="olusturmaTarihi" Precision="0" />
+          <Property Type="Int32" Name="olusturanPersID" />
+        </EntityType>
+        <EntityType Name="tblOgrenimTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="adi" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="ogrenimNo" />
+        </EntityType>
+        <EntityType Name="tblOgrHesapNoGSS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ibanNo" MaxLength="26" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="GSS2243" MaxLength="2" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblogrReferans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ref" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOnayListesi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ogrID" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="onaylayanKomisyonUyesi" />
+          <Property Type="Int32" Name="onaylayanSKSUyesi" />
+          <Property Type="String" Name="KomisyonOnayTarihi" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="SKSOnayTarihi" MaxLength="11" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPersonel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="persTC" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="adi" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="soyad" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="sifre" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="mail" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="dahiliNo" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="birimId" />
+          <Property Type="Int32" Name="bolumId" />
+          <Property Type="Int32" Name="yetkiID" />
+        </EntityType>
+        <EntityType Name="tblPuantajAyBelirle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="gelecekAyPuantaj" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPuantajGirmeSuresi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="puantajSuresi" />
+        </EntityType>
+        <EntityType Name="tblResmiTatilGunleri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="resmiTatil" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblTalepKontenjan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="birimID" />
+          <Property Type="Int32" Name="bolumID" />
+          <Property Type="Int32" Name="akademikKontenjan" />
+          <Property Type="Int32" Name="idariKontenjan" />
+          <Property Type="DateTime" Name="tarih" Precision="3" />
+          <Property Type="Int32" Name="onay" />
+        </EntityType>
+        <EntityType Name="tblYasalKesinti">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ogrNo" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="yasalKesintiTutari" Precision="11" Scale="7" />
+          <Property Type="Decimal" Name="yasalKesintiOrani" Precision="11" Scale="7" />
+          <Property Type="DateTime" Name="yansitilcakMaasDonemi" Precision="0" />
+          <Property Type="String" Name="aciklama" MaxLength="200" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblYetkiTuru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="adi" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOgrBasvuruBilgileri">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BasvuruID" Type="Int32" />
+          <Property Name="ogrNo" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ToplamPuan" Type="Int32" />
+          <Property Name="SKSGonder" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="skscalismaModelStoreContainer" CdmEntityContainer="TurnaEntities">
+          <FunctionImportMapping FunctionImportName="BirimEkle" FunctionName="skscalismaModel.Store.BirimEkle" />
+          <FunctionImportMapping FunctionImportName="birimleriGetir" FunctionName="skscalismaModel.Store.birimleriGetir" />
+          <FunctionImportMapping FunctionImportName="birimleriParamGetir" FunctionName="skscalismaModel.Store.birimleriParamGetir" />
+          <FunctionImportMapping FunctionImportName="birimSil" FunctionName="skscalismaModel.Store.birimSil" />
+          <FunctionImportMapping FunctionImportName="BolumEkle" FunctionName="skscalismaModel.Store.BolumEkle" />
+          <FunctionImportMapping FunctionImportName="bolumleriGetir" FunctionName="skscalismaModel.Store.bolumleriGetir" />
+          <FunctionImportMapping FunctionImportName="bolumlerParamGetir" FunctionName="skscalismaModel.Store.bolumlerParamGetir" />
+          <FunctionImportMapping FunctionImportName="bolumSil" FunctionName="skscalismaModel.Store.bolumSil" />
+          <FunctionImportMapping FunctionImportName="brutMaas1" FunctionName="skscalismaModel.Store.brutMaas1" />
+          <FunctionImportMapping FunctionImportName="calisanAktifEt" FunctionName="skscalismaModel.Store.calisanAktifEt" />
+          <FunctionImportMapping FunctionImportName="calisanParamGetir" FunctionName="skscalismaModel.Store.calisanParamGetir" />
+          <FunctionImportMapping FunctionImportName="CalisanYoklamaEkle" FunctionName="skscalismaModel.Store.CalisanYoklamaEkle" />
+          <FunctionImportMapping FunctionImportName="calisanYoklamaEklensinMi" FunctionName="skscalismaModel.Store.calisanYoklamaEklensinMi" />
+          <FunctionImportMapping FunctionImportName="calisanYoklamaGetir" FunctionName="skscalismaModel.Store.calisanYoklamaGetir" />
+          <FunctionImportMapping FunctionImportName="CalismaSekliEkle" FunctionName="skscalismaModel.Store.CalismaSekliEkle" />
+          <FunctionImportMapping FunctionImportName="calismaYeriEkle" FunctionName="skscalismaModel.Store.calismaYeriEkle" />
+          <FunctionImportMapping FunctionImportName="GunHesabi" FunctionName="skscalismaModel.Store.GunHesabi" />
+          <FunctionImportMapping FunctionImportName="HizliIseAl" FunctionName="skscalismaModel.Store.HizliIseAl" />
+          <FunctionImportMapping FunctionImportName="IlanEkle" FunctionName="skscalismaModel.Store.IlanEkle" />
+          <FunctionImportMapping FunctionImportName="ilanSil" FunctionName="skscalismaModel.Store.ilanSil" />
+          <FunctionImportMapping FunctionImportName="isTanimiGetir" FunctionName="skscalismaModel.Store.isTanimiGetir" />
+          <FunctionImportMapping FunctionImportName="kontenjanEkle" FunctionName="skscalismaModel.Store.kontenjanEkle" />
+          <FunctionImportMapping FunctionImportName="ogrAktifPasit" FunctionName="skscalismaModel.Store.ogrAktifPasit" />
+          <FunctionImportMapping FunctionImportName="ogrAnketCvb" FunctionName="skscalismaModel.Store.ogrAnketCvb" />
+          <FunctionImportMapping FunctionImportName="ogrAnketGuncelle" FunctionName="skscalismaModel.Store.ogrAnketGuncelle" />
+          <FunctionImportMapping FunctionImportName="ogrAnketGuncelle3" FunctionName="skscalismaModel.Store.ogrAnketGuncelle3" />
+          <FunctionImportMapping FunctionImportName="ogrEkle" FunctionName="skscalismaModel.Store.ogrEkle" />
+          <FunctionImportMapping FunctionImportName="OgrenimEkle" FunctionName="skscalismaModel.Store.OgrenimEkle" />
+          <FunctionImportMapping FunctionImportName="ogrenimTuruGetir" FunctionName="skscalismaModel.Store.ogrenimTuruGetir" />
+          <FunctionImportMapping FunctionImportName="ogrGiris" FunctionName="skscalismaModel.Store.ogrGiris" />
+          <FunctionImportMapping FunctionImportName="ogrGSS2243Guncelle1" FunctionName="skscalismaModel.Store.ogrGSS2243Guncelle1" />
+          <FunctionImportMapping FunctionImportName="ogrHesapNoGSSEkle" FunctionName="skscalismaModel.Store.ogrHesapNoGSSEkle" />
+          <FunctionImportMapping FunctionImportName="ogrMaasEkle" FunctionName="skscalismaModel.Store.ogrMaasEkle" />
+          <FunctionImportMapping FunctionImportName="personelYetkiGetir" FunctionName="skscalismaModel.Store.personelYetkiGetir" />
+          <FunctionImportMapping FunctionImportName="puantajGirmeSuresi" FunctionName="skscalismaModel.Store.puantajGirmeSuresi" />
+          <FunctionImportMapping FunctionImportName="sgkCikis" FunctionName="skscalismaModel.Store.sgkCikis" />
+          <FunctionImportMapping FunctionImportName="sgkCikisEXE" FunctionName="skscalismaModel.Store.sgkCikisEXE" />
+          <FunctionImportMapping FunctionImportName="sgkGirisCikisEkle" FunctionName="skscalismaModel.Store.sgkGirisCikisEkle" />
+          <FunctionImportMapping FunctionImportName="sgkOlmasiGerekenTutar" FunctionName="skscalismaModel.Store.sgkOlmasiGerekenTutar" />
+          <FunctionImportMapping FunctionImportName="YetkiTuruEkle" FunctionName="skscalismaModel.Store.YetkiTuruEkle" />
+          <FunctionImportMapping FunctionImportName="PersonelGiris" FunctionName="skscalismaModel.Store.PersonelGiris" />
+          <FunctionImportMapping FunctionImportName="ogrMaasSil" FunctionName="skscalismaModel.Store.ogrMaasSil" />
+          <EntitySetMapping Name="SGKGirisCikis">
+            <EntityTypeMapping TypeName="skscalismaModel.SGKGirisCikis">
+              <MappingFragment StoreEntitySet="SGKGirisCikis">
+                <ScalarProperty Name="SGKCikis" ColumnName="SGKCikis" />
+                <ScalarProperty Name="SGKGiris" ColumnName="SGKGiris" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrID" ColumnName="ogrID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="skscalismaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBirimler">
+            <EntityTypeMapping TypeName="skscalismaModel.tblBirimler">
+              <MappingFragment StoreEntitySet="tblBirimler">
+                <ScalarProperty Name="calisanIdari" ColumnName="calisanIdari" />
+                <ScalarProperty Name="calisanAkademi" ColumnName="calisanAkademi" />
+                <ScalarProperty Name="YedekIdariKon" ColumnName="YedekIdariKon" />
+                <ScalarProperty Name="YedekAkademiKon" ColumnName="YedekAkademiKon" />
+                <ScalarProperty Name="IdariKon" ColumnName="IdariKon" />
+                <ScalarProperty Name="AkademiKon" ColumnName="AkademiKon" />
+                <ScalarProperty Name="BirimTuru" ColumnName="BirimTuru" />
+                <ScalarProperty Name="UstKontenjan" ColumnName="UstKontenjan" />
+                <ScalarProperty Name="EkKontenjan" ColumnName="EkKontenjan" />
+                <ScalarProperty Name="IlkKontenjan" ColumnName="IlkKontenjan" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBolumler">
+            <EntityTypeMapping TypeName="skscalismaModel.tblBolumler">
+              <MappingFragment StoreEntitySet="tblBolumler">
+                <ScalarProperty Name="calisanIdari" ColumnName="calisanIdari" />
+                <ScalarProperty Name="calisanAkademi" ColumnName="calisanAkademi" />
+                <ScalarProperty Name="YedekIdariKon" ColumnName="YedekIdariKon" />
+                <ScalarProperty Name="YedekAkademiKon" ColumnName="YedekAkademiKon" />
+                <ScalarProperty Name="IdariKon" ColumnName="IdariKon" />
+                <ScalarProperty Name="AkademiKon" ColumnName="AkademiKon" />
+                <ScalarProperty Name="altKontenjan" ColumnName="altKontenjan" />
+                <ScalarProperty Name="bolumTuru" ColumnName="bolumTuru" />
+                <ScalarProperty Name="ogrenimTuru" ColumnName="ogrenimTuru" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="birimID" ColumnName="birimID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBolumTuru">
+            <EntityTypeMapping TypeName="skscalismaModel.tblBolumTuru">
+              <MappingFragment StoreEntitySet="tblBolumTuru">
+                <ScalarProperty Name="bolumNo" ColumnName="bolumNo" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCalisanYoklama">
+            <EntityTypeMapping TypeName="skscalismaModel.tblCalisanYoklama">
+              <MappingFragment StoreEntitySet="tblCalisanYoklama">
+                <ScalarProperty Name="calistigiSaat" ColumnName="calistigiSaat" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrID" ColumnName="ogrID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCalismaSekli">
+            <EntityTypeMapping TypeName="skscalismaModel.tblCalismaSekli">
+              <MappingFragment StoreEntitySet="tblCalismaSekli">
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCalismaYerleri">
+            <EntityTypeMapping TypeName="skscalismaModel.tblCalismaYerleri">
+              <MappingFragment StoreEntitySet="tblCalismaYerleri">
+                <ScalarProperty Name="aktifMi" ColumnName="aktifMi" />
+                <ScalarProperty Name="calismaSekli" ColumnName="calismaSekli" />
+                <ScalarProperty Name="calisacagiCalistigiAltBirimi" ColumnName="calisacagiCalistigiAltBirimi" />
+                <ScalarProperty Name="calisacagiCalistigiYer" ColumnName="calisacagiCalistigiYer" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrID" ColumnName="ogrID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHazirlayanOnaylayan">
+            <EntityTypeMapping TypeName="skscalismaModel.tblHazirlayanOnaylayan">
+              <MappingFragment StoreEntitySet="tblHazirlayanOnaylayan">
+                <ScalarProperty Name="hazirlayanOnaylayan" ColumnName="hazirlayanOnaylayan" />
+                <ScalarProperty Name="bolum" ColumnName="bolum" />
+                <ScalarProperty Name="birim" ColumnName="birim" />
+                <ScalarProperty Name="unvan" ColumnName="unvan" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIlanlar">
+            <EntityTypeMapping TypeName="skscalismaModel.tblIlanlar">
+              <MappingFragment StoreEntitySet="tblIlanlar">
+                <ScalarProperty Name="calismaGunleri" ColumnName="calismaGunleri" />
+                <ScalarProperty Name="programAdi" ColumnName="programAdi" />
+                <ScalarProperty Name="sksOnay" ColumnName="sksOnay" />
+                <ScalarProperty Name="bitisSuresi" ColumnName="bitisSuresi" />
+                <ScalarProperty Name="eklemeZamani" ColumnName="eklemeZamani" />
+                <ScalarProperty Name="isTanimi" ColumnName="isTanimi" />
+                <ScalarProperty Name="idari_Akademi" ColumnName="idari_Akademi" />
+                <ScalarProperty Name="kontenjan" ColumnName="kontenjan" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+                <ScalarProperty Name="birimID" ColumnName="birimID" />
+                <ScalarProperty Name="isMetni" ColumnName="isMetni" />
+                <ScalarProperty Name="isBasligi" ColumnName="isBasligi" />
+                <ScalarProperty Name="persID" ColumnName="persID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblIsTakip">
+            <EntityTypeMapping TypeName="skscalismaModel.tblIsTakip">
+              <MappingFragment StoreEntitySet="tblIsTakip">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="kim" ColumnName="kim" />
+                <ScalarProperty Name="kontrol" ColumnName="kontrol" />
+                <ScalarProperty Name="isAcillik" ColumnName="isAcillik" />
+                <ScalarProperty Name="isIcerik" ColumnName="isIcerik" />
+                <ScalarProperty Name="isBaslik" ColumnName="isBaslik" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMulakatSorulari">
+            <EntityTypeMapping TypeName="skscalismaModel.tblMulakatSorulari">
+              <MappingFragment StoreEntitySet="tblMulakatSorulari">
+                <ScalarProperty Name="birimID" ColumnName="birimID" />
+                <ScalarProperty Name="PuanMiktari" ColumnName="PuanMiktari" />
+                <ScalarProperty Name="soru4" ColumnName="soru4" />
+                <ScalarProperty Name="soru3" ColumnName="soru3" />
+                <ScalarProperty Name="soru2" ColumnName="soru2" />
+                <ScalarProperty Name="soru1" ColumnName="soru1" />
+                <ScalarProperty Name="komisyonID" ColumnName="komisyonID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOdenekler">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOdenekler">
+              <MappingFragment StoreEntitySet="tblOdenekler">
+                <ScalarProperty Name="azamiGunlukCalismaSuresi" ColumnName="azamiGunlukCalismaSuresi" />
+                <ScalarProperty Name="onlisansBirimFiyati" ColumnName="onlisansBirimFiyati" />
+                <ScalarProperty Name="lisanBirimFiyati" ColumnName="lisanBirimFiyati" />
+                <ScalarProperty Name="yuksekLisansBirimFiyati" ColumnName="yuksekLisansBirimFiyati" />
+                <ScalarProperty Name="doktoraBirimFiyati" ColumnName="doktoraBirimFiyati" />
+                <ScalarProperty Name="GSS43Orani" ColumnName="GSS43Orani" />
+                <ScalarProperty Name="gelirVergisi" ColumnName="gelirVergisi" />
+                <ScalarProperty Name="damgaVergisi" ColumnName="damgaVergisi" />
+                <ScalarProperty Name="asgariGunlukUcret" ColumnName="asgariGunlukUcret" />
+                <ScalarProperty Name="asgariNetUcret" ColumnName="asgariNetUcret" />
+                <ScalarProperty Name="asgariBrutUcret" ColumnName="asgariBrutUcret" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrBasvuru">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrBasvuru">
+              <MappingFragment StoreEntitySet="tblOgrBasvuru">
+                <ScalarProperty Name="basvuru3Puan" ColumnName="basvuru3Puan" />
+                <ScalarProperty Name="basvuru2Puan" ColumnName="basvuru2Puan" />
+                <ScalarProperty Name="basvuru1Puan" ColumnName="basvuru1Puan" />
+                <ScalarProperty Name="basvuru3" ColumnName="basvuru3" />
+                <ScalarProperty Name="basvuru2" ColumnName="basvuru2" />
+                <ScalarProperty Name="basvuru1" ColumnName="basvuru1" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenci">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrenci">
+              <MappingFragment StoreEntitySet="tblOgrenci">
+                <ScalarProperty Name="ikinciMail" ColumnName="ikinciMail" />
+                <ScalarProperty Name="aktifMi" ColumnName="aktifMi" />
+                <ScalarProperty Name="capBolumu" ColumnName="capBolumu" />
+                <ScalarProperty Name="capOkulu" ColumnName="capOkulu" />
+                <ScalarProperty Name="ogrenimTuru" ColumnName="ogrenimTuru" />
+                <ScalarProperty Name="notOrtalamasi" ColumnName="notOrtalamasi" />
+                <ScalarProperty Name="Sinifi" ColumnName="Sinifi" />
+                <ScalarProperty Name="bolumu" ColumnName="bolumu" />
+                <ScalarProperty Name="okulu" ColumnName="okulu" />
+                <ScalarProperty Name="ceptel" ColumnName="ceptel" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="tc" ColumnName="tc" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenciAnketCevablari">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrenciAnketCevablari">
+              <MappingFragment StoreEntitySet="tblOgrenciAnketCevablari">
+                <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+                <ScalarProperty Name="anketPuaniTop" ColumnName="anketPuaniTop" />
+                <ScalarProperty Name="anketPuani3" ColumnName="anketPuani3" />
+                <ScalarProperty Name="anketPuani2" ColumnName="anketPuani2" />
+                <ScalarProperty Name="anketPuani1" ColumnName="anketPuani1" />
+                <ScalarProperty Name="secimlerIDPUANEk3" ColumnName="secimlerIDPUANEk3" />
+                <ScalarProperty Name="secimlerIDPUANEk2" ColumnName="secimlerIDPUANEk2" />
+                <ScalarProperty Name="secimlerIDPUANEk1" ColumnName="secimlerIDPUANEk1" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrMail" ColumnName="ogrMail" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenciMaas">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrenciMaas">
+              <MappingFragment StoreEntitySet="tblOgrenciMaas">
+                <ScalarProperty Name="aitOlduguAy" ColumnName="aitOlduguAy" />
+                <ScalarProperty Name="düzenlemeTarihi" ColumnName="düzenlemeTarihi" />
+                <ScalarProperty Name="SGKCikisTarihi" ColumnName="SGKCikisTarihi" />
+                <ScalarProperty Name="SGKGirisTarihi" ColumnName="SGKGirisTarihi" />
+                <ScalarProperty Name="GSS43Prim" ColumnName="GSS43Prim" />
+                <ScalarProperty Name="GSS" ColumnName="GSS" />
+                <ScalarProperty Name="yasalKesintiOrani" ColumnName="yasalKesintiOrani" />
+                <ScalarProperty Name="yasalKesinti" ColumnName="yasalKesinti" />
+                <ScalarProperty Name="gelirVergisiTutari" ColumnName="gelirVergisiTutari" />
+                <ScalarProperty Name="damgaVergisiTutari" ColumnName="damgaVergisiTutari" />
+                <ScalarProperty Name="SGKPrimHesabinaEsasUcretHesabi" ColumnName="SGKPrimHesabinaEsasUcretHesabi" />
+                <ScalarProperty Name="aylikBrutUcret" ColumnName="aylikBrutUcret" />
+                <ScalarProperty Name="asgariGunlukBrut" ColumnName="asgariGunlukBrut" />
+                <ScalarProperty Name="ogrenimSekli" ColumnName="ogrenimSekli" />
+                <ScalarProperty Name="odenecekUcret" ColumnName="odenecekUcret" />
+                <ScalarProperty Name="ogrenimTuruBirimFiyat" ColumnName="ogrenimTuruBirimFiyat" />
+                <ScalarProperty Name="calistigiGunSayisi" ColumnName="calistigiGunSayisi" />
+                <ScalarProperty Name="calistigiSaat" ColumnName="calistigiSaat" />
+                <ScalarProperty Name="calistigiBirimID" ColumnName="calistigiBirimID" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrTC" ColumnName="ogrTC" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenciMaasTopBilgileri">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrenciMaasTopBilgileri">
+              <MappingFragment StoreEntitySet="tblOgrenciMaasTopBilgileri">
+                <ScalarProperty Name="olusturanPersID" ColumnName="olusturanPersID" />
+                <ScalarProperty Name="olusturmaTarihi" ColumnName="olusturmaTarihi" />
+                <ScalarProperty Name="ilgiliAy" ColumnName="ilgiliAy" />
+                <ScalarProperty Name="topCalisanSay" ColumnName="topCalisanSay" />
+                <ScalarProperty Name="topNetUcret" ColumnName="topNetUcret" />
+                <ScalarProperty Name="topYasalKesinti" ColumnName="topYasalKesinti" />
+                <ScalarProperty Name="topDamgaVergisiKes" ColumnName="topDamgaVergisiKes" />
+                <ScalarProperty Name="topGelirVergisiKes" ColumnName="topGelirVergisiKes" />
+                <ScalarProperty Name="topUcretGelirVergisiEsas" ColumnName="topUcretGelirVergisiEsas" />
+                <ScalarProperty Name="topSGKPrimIsciYuzde5" ColumnName="topSGKPrimIsciYuzde5" />
+                <ScalarProperty Name="topUcretSGKPrimHesabinaEsas" ColumnName="topUcretSGKPrimHesabinaEsas" />
+                <ScalarProperty Name="topAylikBrutUcret" ColumnName="topAylikBrutUcret" />
+                <ScalarProperty Name="topCalisanSaat" ColumnName="topCalisanSaat" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrenimTuru">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrenimTuru">
+              <MappingFragment StoreEntitySet="tblOgrenimTuru">
+                <ScalarProperty Name="ogrenimNo" ColumnName="ogrenimNo" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOgrHesapNoGSS">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrHesapNoGSS">
+              <MappingFragment StoreEntitySet="tblOgrHesapNoGSS">
+                <ScalarProperty Name="GSS2243" ColumnName="GSS2243" />
+                <ScalarProperty Name="ibanNo" ColumnName="ibanNo" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblogrReferans">
+            <EntityTypeMapping TypeName="skscalismaModel.tblogrReferans">
+              <MappingFragment StoreEntitySet="tblogrReferans">
+                <ScalarProperty Name="ref" ColumnName="ref" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOnayListesi">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOnayListesi">
+              <MappingFragment StoreEntitySet="tblOnayListesi">
+                <ScalarProperty Name="SKSOnayTarihi" ColumnName="SKSOnayTarihi" />
+                <ScalarProperty Name="KomisyonOnayTarihi" ColumnName="KomisyonOnayTarihi" />
+                <ScalarProperty Name="onaylayanSKSUyesi" ColumnName="onaylayanSKSUyesi" />
+                <ScalarProperty Name="onaylayanKomisyonUyesi" ColumnName="onaylayanKomisyonUyesi" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="ogrID" ColumnName="ogrID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPersonel">
+            <EntityTypeMapping TypeName="skscalismaModel.tblPersonel">
+              <MappingFragment StoreEntitySet="tblPersonel">
+                <ScalarProperty Name="yetkiID" ColumnName="yetkiID" />
+                <ScalarProperty Name="bolumId" ColumnName="bolumId" />
+                <ScalarProperty Name="birimId" ColumnName="birimId" />
+                <ScalarProperty Name="dahiliNo" ColumnName="dahiliNo" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="persTC" ColumnName="persTC" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPuantajAyBelirle">
+            <EntityTypeMapping TypeName="skscalismaModel.tblPuantajAyBelirle">
+              <MappingFragment StoreEntitySet="tblPuantajAyBelirle">
+                <ScalarProperty Name="gelecekAyPuantaj" ColumnName="gelecekAyPuantaj" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPuantajGirmeSuresi">
+            <EntityTypeMapping TypeName="skscalismaModel.tblPuantajGirmeSuresi">
+              <MappingFragment StoreEntitySet="tblPuantajGirmeSuresi">
+                <ScalarProperty Name="puantajSuresi" ColumnName="puantajSuresi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblResmiTatilGunleri">
+            <EntityTypeMapping TypeName="skscalismaModel.tblResmiTatilGunleri">
+              <MappingFragment StoreEntitySet="tblResmiTatilGunleri">
+                <ScalarProperty Name="resmiTatil" ColumnName="resmiTatil" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTalepKontenjan">
+            <EntityTypeMapping TypeName="skscalismaModel.tblTalepKontenjan">
+              <MappingFragment StoreEntitySet="tblTalepKontenjan">
+                <ScalarProperty Name="onay" ColumnName="onay" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="idariKontenjan" ColumnName="idariKontenjan" />
+                <ScalarProperty Name="akademikKontenjan" ColumnName="akademikKontenjan" />
+                <ScalarProperty Name="bolumID" ColumnName="bolumID" />
+                <ScalarProperty Name="birimID" ColumnName="birimID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYasalKesinti">
+            <EntityTypeMapping TypeName="skscalismaModel.tblYasalKesinti">
+              <MappingFragment StoreEntitySet="tblYasalKesinti">
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="yansitilcakMaasDonemi" ColumnName="yansitilcakMaasDonemi" />
+                <ScalarProperty Name="yasalKesintiOrani" ColumnName="yasalKesintiOrani" />
+                <ScalarProperty Name="yasalKesintiTutari" ColumnName="yasalKesintiTutari" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblYetkiTuru">
+            <EntityTypeMapping TypeName="skscalismaModel.tblYetkiTuru">
+              <MappingFragment StoreEntitySet="tblYetkiTuru">
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BasvuruOgrSil" FunctionName="skscalismaModel.Store.BasvuruOgrSil" />
+          <EntitySetMapping Name="tblOgrBasvuruBilgileri">
+            <EntityTypeMapping TypeName="skscalismaModel.tblOgrBasvuruBilgileri">
+              <MappingFragment StoreEntitySet="tblOgrBasvuruBilgileri">
+                <ScalarProperty Name="SKSGonder" ColumnName="SKSGonder" />
+                <ScalarProperty Name="ToplamPuan" ColumnName="ToplamPuan" />
+                <ScalarProperty Name="ogrNo" ColumnName="ogrNo" />
+                <ScalarProperty Name="BasvuruID" ColumnName="BasvuruID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="93">
+        <EntityTypeShape EntityType="skscalismaModel.SGKGirisCikis" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="skscalismaModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblBirimler" Width="1.5" PointX="0.75" PointY="3.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="skscalismaModel.tblBolumler" Width="1.5" PointX="2.75" PointY="3.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="skscalismaModel.tblBolumTuru" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="skscalismaModel.tblCalisanYoklama" Width="1.5" PointX="4.75" PointY="3.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblCalismaSekli" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblCalismaYerleri" Width="1.5" PointX="6.75" PointY="3.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblHazirlayanOnaylayan" Width="1.5" PointX="4.75" PointY="7.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblIlanlar" Width="1.5" PointX="6.75" PointY="7.75" Height="3.7109993489583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblIsTakip" Width="1.5" PointX="8.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblMulakatSorulari" Width="1.5" PointX="0.75" PointY="8.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOdenekler" Width="1.5" PointX="8.75" PointY="4.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrBasvuru" Width="1.5" PointX="13.375" PointY="15.375" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrenci" Width="1.5" PointX="10.75" PointY="3.75" Height="4.2879036458333246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrenciAnketCevablari" Width="1.5" PointX="10.75" PointY="9.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrenciMaas" Width="1.5" PointX="2.75" PointY="11.75" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrenciMaasTopBilgileri" Width="1.5" PointX="12.75" PointY="0.75" Height="3.7109993489583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrenimTuru" Width="1.5" PointX="4.75" PointY="12.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrHesapNoGSS" Width="1.5" PointX="12.75" PointY="5.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblogrReferans" Width="1.5" PointX="12.75" PointY="8.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOnayListesi" Width="1.5" PointX="12.75" PointY="11.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblPersonel" Width="1.5" PointX="6.75" PointY="13.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblPuantajAyBelirle" Width="1.5" PointX="8.75" PointY="13.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblPuantajGirmeSuresi" Width="1.5" PointX="14.75" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblResmiTatilGunleri" Width="1.5" PointX="14.75" PointY="3.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblTalepKontenjan" Width="1.5" PointX="14.75" PointY="6.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="skscalismaModel.tblYasalKesinti" Width="1.5" PointX="14.75" PointY="10.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="skscalismaModel.tblYetkiTuru" Width="1.5" PointX="14.75" PointY="13.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="skscalismaModel.tblOgrBasvuruBilgileri" Width="1.5" PointX="11.375" PointY="15.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

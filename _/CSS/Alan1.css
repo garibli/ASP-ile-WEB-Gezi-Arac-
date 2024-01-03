@@ -1,0 +1,24 @@
+﻿    .conte {
+        width:800px;
+        height:auto;
+        float:left;
+    }
+    .conteMin {
+        height:20px;
+        width:772px;
+        margin-top:5px;      
+        float:left;
+    }
+     .Aciklama{
+       
+        height:20px;
+        width:125px;
+        float:left;
+       
+    }
+     .textBox{
+        height:20px;
+        width:250px;
+        float:left;       
+        
+    }

@@ -1,0 +1,578 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="SKSEkrani_MasterPage" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Kısmi Zamanlı Çalısan Sistemi</title>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css" href="../assets/global/plugins/bootstrap-select/bootstrap-select.min.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/global/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/global/plugins/jquery-multi-select/css/multi-select.css"/>
+<!-- BEGIN THEME STYLES -->
+<link href="../assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+
+  
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body  class="page-header-fixed page-quick-sidebar-over-content " style="background-color:White">
+<!DOCTYPE html>
+ <form id="form1" runat="server">
+<div class="page-header navbar navbar-fixed-top">
+	<!-- BEGIN HEADER INNER -->
+	<div class="page-header-inner">
+		<!-- BEGIN LOGO -->
+		<div class="page-logo">
+			<div class="menu-toggler sidebar-toggler hide">
+				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+			</div>
+		</div>
+		<!-- END LOGO -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+		</a>
+		<!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN TOP NAVIGATION MENU -->
+		<div class="top-menu">
+			<ul class="nav navbar-nav pull-right">
+            <li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="Label1" runat="server" Text="Mevzuat"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#"> İlgili Kanunlar</a>
+						</li>
+						<li>
+							<a href="#"> İlgili Tüzükler </a>
+						</li>
+						<li>
+							<a href="#">İlgili Yönetmelikler</a>
+						</li>
+						<li>
+							<a href="#"> İlgili Yönergeler </a>
+						</li>
+						<li>
+							<a href="#"> İlgili Senato Kararları </a>
+						</li>
+						<li>
+							<a href="#"> İlgili ÜYK </a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="lblPuantaj" runat="server" Text="Puantaj"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="Puantaj.aspx">
+							Puantaj Oluştur </a>
+						</li>
+						<li>
+							<a href="../PuantajGirilemez.aspx">
+							 SKS Çalışanlar İçin Puantaj</a>
+						</li>
+						
+						<li>
+							<a href="TumBirimPuantajlari.aspx">
+							 Tüm Birimler İçin Puantaj
+							</a>
+						</li>
+					</ul>
+				</li>
+                <li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="Label2" runat="server" Text="Bordro"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="MaasBordroOlustur.aspx">Maaş Bordro </a>
+						</li>
+					</ul>
+				</li>
+                <li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="Label3" runat="server" Text="Listeler"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="PersonelListele.aspx"> Personel Listele </a>
+						</li>
+                        <li>
+							<a href="Sabis.aspx"> Sabis Bilgileri </a>
+						</li>
+						<li>
+							<a href="OgrListele.aspx">Öğrenci Listele </a>
+						</li>
+						<li>
+							<a href="BirimListele.aspx"> Birim Listele 
+							</a>
+						</li>
+						<li>
+							<a href="AltBolumListele.aspx"> Alt Birim Listele
+							</a>
+						</li>
+					</ul>
+				</li>
+                <li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="Label4" runat="server" Text="İletişim"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#"> Tel </a>
+						</li>
+						<li>
+							<a href="sksMail.aspx"> Mail </a>
+						</li>
+						<li>
+							<a href="#"> Web
+							</a>
+						</li>
+						<li>
+							<a href="#">Facebook
+							</a>
+						</li>
+						<li>
+							<a href="#"> Tweeter</a>
+						</li>
+                        <li>
+							<a href="isTakip.aspx"> İs takip</a>
+						</li>
+						
+					</ul>
+				</li>
+                <li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<span class="username username-hide-on-mobile">
+					   <asp:Label ID="lblBilgi" runat="server" Text="Label"></asp:Label></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="extra_profile.html">
+							<i class="icon-user"></i> My Profile </a>
+						</li>
+						<li>
+							<a href="page_calendar.html">
+							<i class="icon-calendar"></i> My Calendar </a>
+						</li>
+						<li>
+							<a href="inbox.html">
+							<i class="icon-envelope-open"></i> My Inbox <span class="badge badge-danger">
+							3 </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="icon-rocket"></i> My Tasks <span class="badge badge-success">
+							7 </span>
+							</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">
+							<i class="icon-lock"></i> Lock Screen </a>
+						</li>
+						<li>
+                            <asp:Button ID="btnCikis" CssClass="btn btn-default col-md-12" runat="server" 
+                                Text="Çıkış" onclick="btnCikis_Click" />
+						</li>
+					</ul>
+				</li>
+				<!-- END USER LOGIN DROPDOWN -->
+				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
+				<li class="dropdown dropdown-quick-sidebar-toggler">
+					<a href="javascript:;" class="dropdown-toggle">
+					<i class="icon-logout"></i>
+					</a>
+				</li>
+				<!-- END QUICK SIDEBAR TOGGLER -->
+			</ul>
+		</div>
+		<!-- END TOP NAVIGATION MENU -->
+	</div>
+	<!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container blue">
+	<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<ul class="page-sidebar-menu " data-auto-scroll="true" data-slide-speed="200">
+				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+				<li class="sidebar-toggler-wrapper">
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler">
+					</div>
+					<!-- END SIDEBAR TOGGLER BUTTON -->
+				</li>
+               
+				
+                 <li class="start" >
+					<a href="javascript:;">
+					<span class="title">Birim-Bölüm İşlemleri</span>
+					<span class="arrow "></span>
+				    </a>
+					<ul class="sub-menu">
+                    <li>
+							<a href="../assets/SKS_SGK_Baglantisi.rar">
+							SGK Bağlantı Programını İndir...</a>
+						</li>
+						<li>
+							<a href="BirimEkle.aspx">
+							Yeni Birim Oluştur</a>
+						</li>
+						<li>
+							<a href="AltBolumEkle.aspx">
+							Alt Birim Oluştur</a>
+						</li>
+						<li>
+							<a href="BirimGuncelle.aspx">
+							Birim Güncelleme</a>
+						</li>
+                        <li>
+							<a href="AltBolumGuncelle.aspx">
+							Alt Birim Güncelleme</a>
+						</li>
+                        <li>
+							<a href="BirimSil.aspx">
+							Birim Sil</a>
+						</li>
+                        <li>
+							<a href="AltBirimSil.aspx">
+							Alt Birim Sil</a>
+						</li>
+					</ul>
+				</li>
+				<li >
+					<a href="javascript:;">
+					<span class="title">Kişi-Personel İşlemleri</span>
+					<span class="arrow "></span>
+				    </a>
+					<ul class="sub-menu">
+						<li>
+							<a href="personelIslem.aspx">
+							Yeni Personel Oluştur</a>
+						</li>
+						<li>
+							<a href="personelDuzenle.aspx">
+							Personel Güncelle</a>
+						</li>
+						<li>
+							<a href="personelDuzenle.aspx">
+							Personel Sil</a>
+						</li>
+					</ul>
+				</li>
+
+                	<li>
+					<a href="javascript:;">
+					<span class="title">ÖĞRENCİ İşlemleri</span>
+					<span class="arrow "></span>
+				    </a>
+					<ul class="sub-menu">
+						<li>
+							<a href="HizliCalisanEkle.aspx">
+							Yeni Öğrenci Oluştur</a>
+						</li>
+						<li>
+							<a href="CalisanDuzenle.aspx">
+							Öğrenci Güncelle(GENEL)</a>
+						</li>
+                        <li>
+							<a href="GSSDegistir.aspx">
+							Öğrenci Güncelle(GSS)</a>
+						</li>
+                        <li>
+							<a href="HesapNoGuncelle.aspx">
+							Öğrenci Güncelle(IBAN)</a>
+						</li>
+						<li>
+							<a href="CalisanDuzenle.aspx">
+							Öğrenci Sil</a>
+						</li>
+                        <li>
+							<a href="IseAlim.aspx">
+							Öğrencinin Çalışacağı Yeri Belirle</a>
+						</li>
+                        <li>
+							<a href="OzelOgrIseAlım.aspx">
+							Engelli Öğrenci İşe Alım</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<span class="title">Kontenjan işlemleri</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="Kontenjan.aspx">
+							Birim kontenjan Belirle-Eksilt-Arttır</a>
+						</li>
+						<li>
+							<a href="AltBolumKontenjanBelirle.aspx">
+							Alt Birim kontenjan Belirle-Eksilt-Arttır</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<span class="title">SGK İşlemleri</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="SGKGiris.aspx">
+							SGK Giriş Yap</a>
+						</li>
+						<li>
+							<a href="SGKCikis.aspx">
+							SGK Çıkış Yap</a>
+						</li>
+                        <li>
+							<a href="CalismaYerleri.aspx">
+							SGK Mukerrer Kayıt İptal</a>
+						</li>
+                        <li>
+							<a href="SGKGecmisi.aspx">
+							SGK Mukerrer Kayıt İptal 2</a>
+						</li>
+						<li>
+							<a href="SGKGirisGuncelle.aspx">
+							SGK Giriş Güncelle</a>
+						</li>
+                        <li>
+							<a href="SGKCikisGuncelle.aspx">
+							SGK Çıkış Güncelle</a>
+						</li>
+                        <li>
+							<a href="GSSDegistir.aspx">
+							GSS Güncelle</a>
+						</li>
+                        <li>
+							<a href="HesapNoGuncelle.aspx">
+							HesapNo Güncelle</a>
+						</li>
+                        <li>
+							<a href="SGKCikisNull.aspx">
+							SGK Çıkış Sil</a>
+						</li>
+                        <li>
+							<a href="#">
+							Prim İşlemleri</a>
+						</li>
+                        <li>
+							<a href="#">
+							SGK Hatası Olan Kişiler</a>
+						</li>
+					</ul>
+				</li>
+				<!-- BEGIN FRONTEND THEME LINKS -->
+
+                	<li>
+					<a href="javascript:;">
+					<span class="title">Muhasebe İşlemleri</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="Odenekler.aspx">
+							Birim Fiyat Oranları</a>
+						</li>
+						<li>
+							<a href="YasalKes.aspx">
+							Yasal Kesintisi Olanlar</a>
+						</li>
+						<li>
+							<a href="TatilGunleri.aspx">
+							Resmi İdari Tatiller</a>
+						</li>
+                        <li>
+							<a href="PuantajGirilecekAySuresi.aspx">
+							Puantaj Süreleri</a>
+						</li>
+					</ul>
+				</li>
+
+                	<li>
+					<a href="javascript:;">
+					<span class="title">İlan İşlemleri</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="IlanEkle.aspx">
+							İlan Oluştur</a>
+						</li>
+						<li>
+							<a href="#">
+							İlan Güncelle</a>
+						</li>
+                        <li>
+							<a href="#">
+							İlan Sil</a>
+						</li>
+					</ul>
+				</li>
+				
+                <li class="last ">
+					<a href="Sozlesme.aspx">
+					<span class="title">Sözleşme</span>
+					</a>
+				</li>
+                 <li class="last ">
+					<a href="isTakip.aspx">
+					<span class="title">İŞ TAKİP</span>
+					</a>
+				</li>
+                <li>
+					<a href="javascript:;">
+					<span class="title">Rapor</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="SGKCikisBildirgeleriaspx.aspx">
+							SGK Çıkış Bildirgeleri</a>
+						</li>
+						<li>
+							<a href="#">
+							...</a>
+						</li>
+                        <li>
+							<a href="#">
+							...</a>
+						</li>
+					</ul>
+				</li>
+				
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+        <div class="theme-panel hidden-xs hidden-sm">
+				<div class="toggler">
+				</div>
+				<div class="toggler-close">
+				</div>
+				<div class="theme-options">
+					<div class="theme-option theme-colors clearfix">
+						
+						THEME COLOR 
+						<ul>
+							<li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default">
+							</li>
+							<li class="color-darkblue tooltips" data-style="darkblue" data-container="body" data-original-title="Dark Blue">
+							</li>
+							<li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue">
+							</li>
+							<li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey">
+							</li>
+							<li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light">
+							</li>
+							<li class="color-light2 tooltips" data-style="light2" data-container="body" data-html="true" data-original-title="Light 2">
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			 <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        
+        </asp:ContentPlaceHolder>
+		
+	</div>
+    </div>
+	</div>
+
+<script src="../assets/global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="../assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="../assets/global/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="../assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="../assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="../assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="../assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<script src="../assets/admin/pages/scripts/components-dropdowns.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function () {
+        // initiate layout and plugins
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        QuickSidebar.init(); // init quick sidebar
+        Demo.init(); // init demo features
+        ComponentsDropdowns.init();
+    });   
+    </script>
+<!-- END GOOGLE RECAPTCHA -->
+<!-- END JAVASCRIPTS --></form>
+</body>
+<!-- END BODY -->
+
+
+
+
+    
+      
+
+
+   
+ 
+</html>
+
